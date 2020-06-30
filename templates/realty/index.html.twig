@@ -1,17 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RealtyController!{% endblock %}
+{% block title %}Realty index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Realty index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        welcome {{ app.user.getUsername() }}
-    {% endif %}
-</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>State</th>
+                <th>Price_sell</th>
+                <th>Price_buy</th>
+                <th>Price_rent</th>
+                <th>Surface</th>
+                <th>Nb_room</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for realty in realties %}
+            <tr>
+                <td>{{ realty.id }}</td>
+                <td>{{ realty.type }}</td>
+                <td>{{ realty.state }}</td>
+                <td>{{ realty.priceSell }}</td>
+                <td>{{ realty.priceBuy }}</td>
+                <td>{{ realty.priceRent }}</td>
+                <td>{{ realty.surface }}</td>
+                <td>{{ realty.nbRoom }}</td>
+                <td>{{ realty.description }}</td>
+                <td>
+                    <a href="{{ path('realty_show', {'id': realty.id}) }}">show</a>
+                    <a href="{{ path('realty_edit', {'id': realty.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('realty_new') }}">Create new</a>
 {% endblock %}

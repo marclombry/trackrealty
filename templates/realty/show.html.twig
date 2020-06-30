@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Realty{% endblock %}
+
+{% block body %}
+    <h1>Realty</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ realty.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ realty.type }}</td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td>{{ realty.state }}</td>
+            </tr>
+            <tr>
+                <th>Price_sell</th>
+                <td>{{ realty.priceSell }}</td>
+            </tr>
+            <tr>
+                <th>Price_buy</th>
+                <td>{{ realty.priceBuy }}</td>
+            </tr>
+            <tr>
+                <th>Price_rent</th>
+                <td>{{ realty.priceRent }}</td>
+            </tr>
+            <tr>
+                <th>Surface</th>
+                <td>{{ realty.surface }}</td>
+            </tr>
+            <tr>
+                <th>Nb_room</th>
+                <td>{{ realty.nbRoom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ realty.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('realty_index') }}">back to list</a>
+
+    <a href="{{ path('realty_edit', {'id': realty.id}) }}">edit</a>
+
+    {{ include('realty/_delete_form.html.twig') }}
+{% endblock %}
