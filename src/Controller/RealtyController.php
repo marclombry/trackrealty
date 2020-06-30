@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Realty;
+use App\Entity\User;
 use App\Form\RealtyType;
 use App\Repository\RealtyRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,10 +22,12 @@ class RealtyController extends AbstractController
     /**
      * @Route("/", name="realty_index", methods={"GET"})
      */
-    public function index(RealtyRepository $realtyRepository): Response
+    public function index(RealtyRepository $realtyRepository, UserRepository $user): Response
     {
+       
         return $this->render('realty/index.html.twig', [
             'realties' => $realtyRepository->findAll(),
+            'users' => $user
         ]);
     }
 

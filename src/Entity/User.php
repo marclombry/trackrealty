@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -49,9 +51,14 @@ class User implements UserInterface
     private $confirmPassword;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Realty", inversedBy="user")
+     * @ORM\OneToMany(targetEntity=Realty::class, mappedBy="user")
      */
-    private $realty;
+    private $realties;
+
+    public function __construct()
+    {
+        $this->realties = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -106,18 +113,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRealty(): ?Realty
-    {
-        return $this->Realty;
-    }
-
-    public function setRealty(?Realty $realty): self
-    {
-        $this->Realty = $realty;
-
-        return $this;
-    }
-
     public function eraseCredentials(){
 
     }
@@ -126,5 +121,36 @@ class User implements UserInterface
 
     public function getRoles() {
         return ['ROLE_USER'];
+    }
+
+    /**
+     * @return Collection|Realty[]
+     */
+    public function getRealties(): Collection
+    {
+        return $this->realties;
+    }
+
+    public function addRealty(Realty $realty): self
+    {
+        if (!$this->realties->contains($realty)) {
+            $this->realties[] = $realty;
+            $realty->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRealty(Realty $realty): self
+    {
+        if ($this->realties->contains($realty)) {
+            $this->realties->removeElement($realty);
+            // set the owning side to null (unless already changed)
+            if ($realty->getUser() === $this) {
+                $realty->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
