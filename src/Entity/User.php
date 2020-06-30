@@ -46,7 +46,7 @@ class User implements UserInterface
      *
      * 
      */
-    public $confirm_password;
+    private $confirmPassword;
 
     public function getId(): ?int
     {
@@ -83,6 +83,18 @@ class User implements UserInterface
     }
 
     public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getConfirmPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setConfirmPassword(string $password): self
     {
         $this->password = $password;
 

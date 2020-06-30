@@ -8,12 +8,12 @@
         {% endblock %}
     </head>
     <body>
-        <nav>
-            <li><a href="{{  path('security_registration') }}">Inscription</a></li>
+        <nav>      
             {% if not app.user %}
-                <li><a href="{{  path('security_login') }}">Connexion</a></li>
+                <li><a href="{{  path('app_register') }}">Inscription</a></li>
+                <li><a href="{{  path('app_login') }}">Connexion</a></li>
             {% else %}
-                <li><a href="{{  path('security_logout') }}">Deconnexion</a></li>
+                <li><a href="{{  path('app_logout') }}">Deconnexion</a></li>
             {% endif %}
         
         </nav>
