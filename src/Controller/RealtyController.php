@@ -24,10 +24,10 @@ class RealtyController extends AbstractController
      */
     public function index(RealtyRepository $realtyRepository, UserRepository $user): Response
     {
-       
+        $users = $user->findAll()[0]->getRealties(); 
         return $this->render('realty/index.html.twig', [
             'realties' => $realtyRepository->findAll(),
-            'users' => $user
+            'users' => $users
         ]);
     }
 
