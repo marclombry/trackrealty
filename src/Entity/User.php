@@ -48,6 +48,11 @@ class User implements UserInterface
      */
     private $confirmPassword;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Realty", inversedBy="user")
+     */
+    private $realty;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -97,6 +102,18 @@ class User implements UserInterface
     public function setConfirmPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getRealty(): ?Realty
+    {
+        return $this->Realty;
+    }
+
+    public function setRealty(?Realty $realty): self
+    {
+        $this->Realty = $realty;
 
         return $this;
     }
