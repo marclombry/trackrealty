@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/realty")
@@ -22,12 +23,12 @@ class RealtyController extends AbstractController
     /**
      * @Route("/", name="realty_index", methods={"GET"})
      */
-    public function index(RealtyRepository $realtyRepository, UserRepository $user): Response
+    public function index(RealtyRepository $realtyRepository,UserRepository $userRepository, UserInterface $user): Response
     {
-        $users = $user->findAll()[0]->getRealties(); 
+      
         return $this->render('realty/index.html.twig', [
-            'realties' => $realtyRepository->findAll(),
-            'users' => $users
+            'realties' => $userRepository->find($user->getId())
+                ->getRealties()
         ]);
     }
 
