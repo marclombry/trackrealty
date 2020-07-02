@@ -9,30 +9,40 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Type</th>
-                <th>State</th>
-                <th>Price_sell</th>
-                <th>Price_buy</th>
-                <th>Price_rent</th>
-                <th>Surface</th>
-                <th>Nb_room</th>
+                <th>Photo</th>
+                <th>Title</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Postal Code</th>
+                <th>Address</th>
                 <th>Description</th>
+                <th>State</th>
+                <th>Nb_Room</th>
+                <th>Price Buy</th>
+                <th>Price Sell</th>
+                <th>Price Rent</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
-        
+      
         {% for realty in realties %}
             <tr>
                 <td>{{ realty.id }}</td>
+                <td>{{ realty.photo }}</td>
+                <td>{{ realty.title }}</td>
                 <td>{{ realty.type }}</td>
+                <td>{{ realty.postalCode }}</td>
                 <td>{{ realty.state }}</td>
-                <td>{{ realty.priceSell }}</td>
-                <td>{{ realty.priceBuy }}</td>
-                <td>{{ realty.priceRent }}</td>
+                <td>{{ realty.address }}</td>
+                <td>{{ realty.description }}</td>
                 <td>{{ realty.surface }}</td>
                 <td>{{ realty.nbRoom }}</td>
-                <td>{{ realty.description }}</td>
+                <td>{{ realty.priceBuy }}</td>
+                <td>{{ realty.priceSell }}</td>
+                <td>{{ realty.priceRent }}</td>
+                <td>{{ realty.longitude }}</td>
+                <td>{{ realty.latitude }}</td>
                 <td>
                     <a href="{{ path('realty_show', {'id': realty.id}) }}">show</a>
                     <a href="{{ path('realty_edit', {'id': realty.id}) }}">edit</a>

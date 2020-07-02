@@ -12,6 +12,7 @@ class RealtyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('title')
             ->add('type')
             ->add('state')
             ->add('price_sell')

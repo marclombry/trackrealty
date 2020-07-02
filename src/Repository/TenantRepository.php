@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Tenant;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -35,6 +36,15 @@ class TenantRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findByRealty()
+    {
+        return $this->createQueryBuilder('t')
+        ->leftJoin('App\Entity\Realty', 'r', Join::WITH,  'r = t.realty')
+        ->getQuery()
+        ->getResult()
+        ;
+    }
+    
 
     /*
     public function findOneBySomeField($value): ?Tenant

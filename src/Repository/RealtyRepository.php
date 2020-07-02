@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Realty;
+use App\Entity\Tenant;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -23,18 +25,24 @@ class RealtyRepository extends ServiceEntityRepository
     //  * @return Realty[] Returns an array of Realty objects
     //  */
     /*
-    public function findByExampleField($value)
+    public function f()
     {
         return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
+            
+           
+            ->leftJoin('r.Id','Id')
+          
+         
             ->getQuery()
             ->getResult()
         ;
     }
     */
+  /*
+    SELECT * FROM App\Entity\Realty r
+    LEFT JOIN App\Entity\Tenant t WITH r.id = t.id 
+
+  */
 
     /*
     public function findOneBySomeField($value): ?Realty

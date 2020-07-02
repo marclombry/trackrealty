@@ -6,6 +6,7 @@ use App\Entity\Realty;
 use App\Entity\User;
 use App\Form\RealtyType;
 use App\Repository\RealtyRepository;
+use App\Repository\TenantRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,15 +21,17 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class RealtyController extends AbstractController
 {
+    
     /**
      * @Route("/", name="realty_index", methods={"GET"})
      */
-    public function index(RealtyRepository $realtyRepository,UserRepository $userRepository, UserInterface $user): Response
+    public function index(RealtyRepository $realtyRepository,UserRepository $userRepository, UserInterface $user, TenantRepository $tenantRepository): Response
     {
-      
+        dd($tenantRepository->findByRealty());
         return $this->render('realty/index.html.twig', [
             'realties' => $userRepository->find($user->getId())
-                ->getRealties()
+                ->getRealties(),
+        
         ]);
     }
 
