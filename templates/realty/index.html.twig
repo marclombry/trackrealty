@@ -4,59 +4,44 @@
 
 {% block body %}
     <h1>Realty index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Photo</th>
-                <th>Title</th>
-                <th>Country</th>
-                <th>City</th>
-                <th>Postal Code</th>
-                <th>Address</th>
-                <th>Description</th>
-                <th>State</th>
-                <th>Nb_Room</th>
-                <th>Price Buy</th>
-                <th>Price Sell</th>
-                <th>Price Rent</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>     
-        {% for realty in realties %}
-            <tr>
-                <td>{{ realty.id }}</td>
-                <td>{{ realty.photo }}</td>
-                <td>{{ realty.title }}</td>
-                <td>{{ realty.type }}</td>
-                <td>{{ realty.postalCode }}</td>
-                <td>{{ realty.state }}</td>
-                <td>{{ realty.address }}</td>
-                <td>{{ realty.description }}</td>
-                <td>{{ realty.surface }}</td>
-                <td>{{ realty.nbRoom }}</td>
-                <td>{{ realty.priceBuy }}</td>
-                <td>{{ realty.priceSell }}</td>
-                <td>{{ realty.priceRent }}</td>
-                <td>{{ realty.longitude }}</td>
-                <td>{{ realty.latitude }}</td>
-                <td>
-                    <a href="{{ path('realty_show', {'id': realty.id}) }}">show</a>
-                    <a href="{{ path('realty_edit', {'id': realty.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
     <a href="{{ path('realty_new') }}">Create new</a>
+    {% for realty in realties %}
+    <div class="media border p-3 m-3">
+        <img src="{{ realty.photo }}" alt="bien immobilier" class="mr-3 mt-3 rounded-square" style="width:300px;">
+        <div class="media-body m-3">
+            <h4>{{ realty.title}}</h4>
+                <div class="localisation-realty">
+                    <p>Type: {{ realty.type }}</p>
+                    <p>Etat du bien: {{ realty.state }}</p>
+                    <p>Pays: {{ realty.country }}</p>
+                    <p>Ville: {{ realty.city }}</p>
+                    <p>Cope Postal: {{ realty.postalCode }}</p>
+                    <p>Adresse: {{ realty.address }}</p>
+                </div>
+                <div class="price-realty">
+                    <p>Prix d'achat: {{ realty.priceBuy }}</p>
+                    <p>Prix de vente: {{ realty.priceSell }}</p>
+                    <p>Loyer: {{ realty.priceRent }}</p>
+                </div>
+                <div class="detail-realty">
+                    <p>Description: {{ realty.description }}</p>
+                    <p>Surface: {{ realty.surface }}<p>
+                    <p>Nombre de pièce: {{ realty.nbRoom }}</p>
+                </div>
+                <div class="map-realty">
+                    {# <p>{{ realty.longitude }}</p>
+                    <p>{{ realty.latitude }}</p> #}
+                </div>
+                <div class="edit-realty">
 
+                    <div class="btn btn-info"><a href="{{ path('realty_show', {'id': realty.id}) }}">show</a></div>
+                    <div class="btn btn-warning"><a href="{{ path('realty_edit', {'id': realty.id}) }}">edit</a></div>
+               
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+   
 
   
 {% endblock %}
