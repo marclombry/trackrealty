@@ -13,6 +13,7 @@
                 <th>Lastname</th>
                 <th>Phone</th>
                 <th>Email</th>
+                <th>Maison</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{ tenant.lastname }}</td>
                 <td>{{ tenant.phone }}</td>
                 <td>{{ tenant.email }}</td>
+                <td>{{ tenant.realty.title }}</td>
                 <td>
                     <a href="{{ path('tenant_show', {'id': tenant.id}) }}">show</a>
                     <a href="{{ path('tenant_edit', {'id': tenant.id}) }}">edit</a>

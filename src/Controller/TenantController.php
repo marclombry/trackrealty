@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/tenant")
@@ -21,10 +22,10 @@ class TenantController extends AbstractController
     /**
      * @Route("/", name="tenant_index", methods={"GET"})
      */
-    public function index(TenantRepository $tenantRepository): Response
+    public function index(TenantRepository $tenantRepository, UserInterface $user): Response
     {
         return $this->render('tenant/index.html.twig', [
-            'tenants' => $tenantRepository->findAll(),
+            'tenants' => $tenantRepository->findByRealty($user->getId())
         ]);
     }
 

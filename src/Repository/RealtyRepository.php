@@ -38,11 +38,14 @@ class RealtyRepository extends ServiceEntityRepository
         ;
     }
     */
-  /*
-    SELECT * FROM App\Entity\Realty r
-    LEFT JOIN App\Entity\Tenant t WITH r.id = t.id 
-
-  */
+    public function findRealtyByUserConnected($value)
+    {
+        return $this->createQueryBuilder('r')
+            ->where('r.user = :user')
+            ->setParameter('user',$value)
+            ->getQuery()
+            ->getResult();
+    }
 
     /*
     public function findOneBySomeField($value): ?Realty

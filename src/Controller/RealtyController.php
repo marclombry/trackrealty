@@ -25,13 +25,12 @@ class RealtyController extends AbstractController
     /**
      * @Route("/", name="realty_index", methods={"GET"})
      */
-    public function index(RealtyRepository $realtyRepository,UserRepository $userRepository, UserInterface $user, TenantRepository $tenantRepository): Response
+    public function index(RealtyRepository $realtyRepository, UserInterface $user): Response
     {
-        dd($tenantRepository->findByRealty());
         return $this->render('realty/index.html.twig', [
-            'realties' => $userRepository->find($user->getId())
-                ->getRealties(),
-        
+            'realties' => $realtyRepository
+            ->findRealtyByUserConnected($user->getId())
+           
         ]);
     }
 
