@@ -37,6 +37,11 @@ class Tenant
      */
     private $email;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Realty::class, inversedBy="tenant")
+     */
+    private $realty;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Tenant
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getRealty(): ?Realty
+    {
+        return $this->realty;
+    }
+
+    public function setRealty(?Realty $realty): self
+    {
+        $this->realty = $realty;
 
         return $this;
     }

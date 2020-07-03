@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Realty{% endblock %}
+
+{% block body %}
+    <h1>Edit Realty</h1>
+
+    {{ include('realty/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('realty_index') }}">back to list</a>
+
+    {{ include('realty/_delete_form.html.twig') }}
+{% endblock %}

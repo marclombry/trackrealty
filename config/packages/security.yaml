@@ -20,8 +20,8 @@ security:
             provider: in_database
 
             form_login:
-                login_path: security_login
-                check_path: security_login
+                login_path: app_login
+                check_path: app_login
 
             logout:
                 path: app_logout
@@ -41,3 +41,4 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/realty, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER],  }

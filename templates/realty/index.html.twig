@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Realty index{% endblock %}
+
+{% block body %}
+    <h1>Realty index</h1>
+    <a href="{{ path('realty_new') }}">Create new</a>
+    {% for realty in realties %}
+    <div class="media border p-3 m-3">
+        <img src="{{ realty.photo }}" alt="bien immobilier" class="mr-3 mt-3 rounded-square" style="width:300px;">
+        <div class="media-body m-3">
+            <h4>{{ realty.title}}</h4>
+                <div class="localisation-realty">
+                    <p>Type: {{ realty.type }}</p>
+                    <p>Etat du bien: {{ realty.state }}</p>
+                    <p>Pays: {{ realty.country }}</p>
+                    <p>Ville: {{ realty.city }}</p>
+                    <p>Cope Postal: {{ realty.postalCode }}</p>
+                    <p>Adresse: {{ realty.address }}</p>
+                </div>
+                <div class="price-realty">
+                    <p>Prix d'achat: {{ realty.priceBuy }}</p>
+                    <p>Prix de vente: {{ realty.priceSell }}</p>
+                    <p>Loyer: {{ realty.priceRent }}</p>
+                </div>
+                <div class="detail-realty">
+                    <p>Description: {{ realty.description }}</p>
+                    <p>Surface: {{ realty.surface }}<p>
+                    <p>Nombre de pièce: {{ realty.nbRoom }}</p>
+                </div>
+                <div class="map-realty">
+                    {# <p>{{ realty.longitude }}</p>
+                    <p>{{ realty.latitude }}</p> #}
+                </div>
+                <div class="edit-realty">
+
+                    <div class="btn btn-info"><a href="{{ path('realty_show', {'id': realty.id}) }}">show</a></div>
+                    <div class="btn btn-warning"><a href="{{ path('realty_edit', {'id': realty.id}) }}">edit</a></div>
+               
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+   
+
+  
+{% endblock %}
