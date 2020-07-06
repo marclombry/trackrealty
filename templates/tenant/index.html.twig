@@ -4,7 +4,9 @@
 
 {% block body %}
     <h1>Tenant index</h1>
-
+    <div>
+        <a href="{{ path('tenant_new') }}"><i class="icofont-plus"></i> Create new</a>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -27,8 +29,9 @@
                 <td>{{ tenant.email }}</td>
                 <td>{{ tenant.realty.title }}</td>
                 <td>
-                    <a href="{{ path('tenant_show', {'id': tenant.id}) }}">show</a>
-                    <a href="{{ path('tenant_edit', {'id': tenant.id}) }}">edit</a>
+                    <a href="{{ path('tenant_show', {'id': tenant.id}) }}"><i class="icofont-eye"></i>show</a>
+                    <a href="{{ path('tenant_edit', {'id': tenant.id}) }}"><i class="icofont-gear"></i> edit</a>
+                    <a href="{{ path('tenant_delete', {'id': tenant.id}) }}"><i class="icofont-close"></i> delete</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +42,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('tenant_new') }}">Create new</a>
 {% endblock %}
