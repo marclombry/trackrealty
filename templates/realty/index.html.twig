@@ -4,7 +4,9 @@
 
 {% block body %}
     <h1>Realty index</h1>
-    <a href="{{ path('realty_new') }}">Create new</a>
+     <a href="{{ path('realty_new') }}">Ajouter un Bien</a>
+    <div class="d-inline-flex">
+   
     {% for realty in realties %}
     <div class="media border p-3 m-3">
         <img src="{{ realty.photo }}" alt="bien immobilier" class="mr-3 mt-3 rounded-square" style="width:300px;">
@@ -36,16 +38,17 @@
                     <h3>Locataires</h3>
                     
                     {% for tenant in  realty.tenant %}
-                    <div class="card" style="width: 18rem;">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">{{ (tenant.id) }}</li>
-                            <li class="list-group-item">{{ (tenant.firstname) }}</li>
-                            <li class="list-group-item">{{ (tenant.lastname) }}</li>
-                            <li class="list-group-item">{{ (tenant.phone) }}</li>
-                            <li class="list-group-item">{{ (tenant.email) }}</li>
-                        </ul>
+                    <div class="d-inline-flex">
+                        <div class="card" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{ (tenant.id) }}</li>
+                                <li class="list-group-item">{{ (tenant.firstname) }}</li>
+                                <li class="list-group-item">{{ (tenant.lastname) }}</li>
+                                <li class="list-group-item">{{ (tenant.phone) }}</li>
+                                <li class="list-group-item">{{ (tenant.email) }}</li>
+                            </ul>
+                        </div>
                     </div>
-
                     {% else %}
                         <p>Aucun locataire ici</p>
                     {% endfor %}
@@ -59,8 +62,10 @@
                 </div>
         </div>
     </div>
+    {% else %}
+        <p>Aucun biens ici</p>
     {% endfor %}
    
-
+    </div>
   
 {% endblock %}

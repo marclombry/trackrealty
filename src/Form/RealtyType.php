@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Realty;
+use App\Entity\Tenant;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
