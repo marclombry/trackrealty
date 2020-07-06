@@ -32,6 +32,25 @@
                     {# <p>{{ realty.longitude }}</p>
                     <p>{{ realty.latitude }}</p> #}
                 </div>
+                <div class="tenant-realty">
+                    <h3>Locataires</h3>
+                    
+                    {% for tenant in  realty.tenant %}
+                    <div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ (tenant.id) }}</li>
+                            <li class="list-group-item">{{ (tenant.firstname) }}</li>
+                            <li class="list-group-item">{{ (tenant.lastname) }}</li>
+                            <li class="list-group-item">{{ (tenant.phone) }}</li>
+                            <li class="list-group-item">{{ (tenant.email) }}</li>
+                        </ul>
+                    </div>
+
+                    {% else %}
+                        <p>Aucun locataire ici</p>
+                    {% endfor %}
+               
+                </div>
                 <div class="edit-realty">
 
                     <div class="btn btn-info"><a href="{{ path('realty_show', {'id': realty.id}) }}">show</a></div>
