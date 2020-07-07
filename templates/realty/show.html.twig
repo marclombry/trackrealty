@@ -4,51 +4,86 @@
 
 {% block body %}
     <h1>Realty</h1>
+    <a class="my-2" href="{{ path('realty_index') }}">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-90deg-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M6.104 2.396a.5.5 0 0 1 0 .708L3.457 5.75l2.647 2.646a.5.5 0 1 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
+            <path fill-rule="evenodd" d="M2.75 5.75a.5.5 0 0 1 .5-.5h6.5a2.5 2.5 0 0 1 2.5 2.5v5.5a.5.5 0 0 1-1 0v-5.5a1.5 1.5 0 0 0-1.5-1.5h-6.5a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+        Revenir
+    </a>
+    <div class="container">
+        <div>
+            <img class="img-fluid" src="/uploads/{{ realty.photo }}" alt="biens"  />
+        </div>
+        <table class="table m-auto">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ realty.id }}</td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td>{{ realty.type }}</td>
+                </tr>
+                <tr>
+                    <th>State</th>
+                    <td>{{ realty.state }}</td>
+                </tr>
+                <tr>
+                    <th>Price_sell</th>
+                    <td>{{ realty.priceSell }}</td>
+                </tr>
+                <tr>
+                    <th>Price_buy</th>
+                    <td>{{ realty.priceBuy }}</td>
+                </tr>
+                <tr>
+                    <th>Price_rent</th>
+                    <td>{{ realty.priceRent }}</td>
+                </tr>
+                <tr>
+                    <th>Surface</th>
+                    <td>{{ realty.surface }}</td>
+                </tr>
+                <tr>
+                    <th>Nb_room</th>
+                    <td>{{ realty.nbRoom }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ realty.description }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ realty.address }}</td>
+                </tr>
+                <tr>
+                    <th>Code postal</th>
+                    <td>{{ realty.postalCode }}</td>
+                </tr>
+                <tr>
+                    <th>Longitude</th>
+                    <td>{{ realty.longitude }}</td>
+                </tr>
+                <tr>
+                    <th>Latitude</th>
+                    <td>{{ realty.latitude }}</td>
+                </tr>
+                <tr>
+                    <th>Pays</th>
+                    <td>{{ realty.country }}</td>
+                </tr>
+                <tr>
+                    <th>Ville</th>
+                    <td>{{ realty.city }}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div class="d-inline-flex m-1">
+            <a class="btn btn-warning mx-1" href="{{ path('realty_edit', {'id': realty.id}) }}">edit</a>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ realty.id }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ realty.type }}</td>
-            </tr>
-            <tr>
-                <th>State</th>
-                <td>{{ realty.state }}</td>
-            </tr>
-            <tr>
-                <th>Price_sell</th>
-                <td>{{ realty.priceSell }}</td>
-            </tr>
-            <tr>
-                <th>Price_buy</th>
-                <td>{{ realty.priceBuy }}</td>
-            </tr>
-            <tr>
-                <th>Price_rent</th>
-                <td>{{ realty.priceRent }}</td>
-            </tr>
-            <tr>
-                <th>Surface</th>
-                <td>{{ realty.surface }}</td>
-            </tr>
-            <tr>
-                <th>Nb_room</th>
-                <td>{{ realty.nbRoom }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ realty.description }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('realty_index') }}">back to list</a>
-
-    <a href="{{ path('realty_edit', {'id': realty.id}) }}">edit</a>
-
-    {{ include('realty/_delete_form.html.twig') }}
+            {{ include('realty/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

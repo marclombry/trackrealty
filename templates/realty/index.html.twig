@@ -8,43 +8,57 @@
     <div class="d-inline-flex">
    
     {% for realty in realties %}
-    <div class="media border p-3 m-3">
+    <div class=" border p-3 m-3 bg-light">
         <img src="/uploads/{{ realty.photo }}" alt="bien immobilier" class="mr-3 mt-3 rounded-square" style="width:300px;">
         <div class="media-body m-3">
             <h4>{{ realty.title}}</h4>
                 <div class="localisation-realty">
-                    <p>Type: {{ realty.type }}</p>
-                    <p>Etat du bien: {{ realty.state }}</p>
-                    <p>Pays: {{ realty.country }}</p>
-                    <p>Ville: {{ realty.city }}</p>
-                    <p>Cope Postal: {{ realty.postalCode }}</p>
-                    <p>Adresse: {{ realty.address }}</p>
+                    <p>Type: 
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
+                        <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
+                    </svg>
+                    {{ realty.type }}
+                    </p>
                 </div>
                 <div class="price-realty">
-                    <p>Prix d'achat: {{ realty.priceBuy }}</p>
-                    <p>Prix de vente: {{ realty.priceSell }}</p>
-                    <p>Loyer: {{ realty.priceRent }}</p>
+                    <p>Loyer: 
+                    {{ realty.priceRent }}
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z"/>
+                        <path d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+                    </svg>
+                    
+                    </p>
                 </div>
                 <div class="detail-realty">
                     <p>Description: {{ realty.description }}</p>
                     <p>Surface: {{ realty.surface }}<p>
-                    <p>Nombre de pièce: {{ realty.nbRoom }}</p>
+                    <p>Nombre de pièce:
+
+                    {{ realty.nbRoom }}
+                    </p>
                 </div>
                 <div class="map-realty">
                     {# <p>{{ realty.longitude }}</p>
                     <p>{{ realty.latitude }}</p> #}
                 </div>
                 <div class="tenant-realty">
-                    <h3>Locataires</h3>
+                    <h3>
+                    Locataires
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-people" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.995-.944v-.002.002zM7.022 13h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zm7.973.056v-.002.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                    </svg>
+                    </h3>
                     
                     {% for tenant in  realty.tenant %}
                     <div class="d-inline-flex">
                         <div class="card" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">{{ (tenant.id) }}</li>
+                                {# <li class="list-group-item">{{ (tenant.id) }}</li>
                                 <li class="list-group-item">{{ (tenant.firstname) }}</li>
                                 <li class="list-group-item">{{ (tenant.lastname) }}</li>
-                                <li class="list-group-item">{{ (tenant.phone) }}</li>
+                                <li class="list-group-item">{{ (tenant.phone) }}</li> #}
                                 <li class="list-group-item">{{ (tenant.email) }}</li>
                             </ul>
                         </div>
@@ -54,10 +68,35 @@
                     {% endfor %}
                
                 </div>
-                <div class="edit-realty">
-
-                    <div class="btn btn-info"><a href="{{ path('realty_show', {'id': realty.id}) }}">show</a></div>
-                    <div class="btn btn-warning"><a href="{{ path('realty_edit', {'id': realty.id}) }}">edit</a></div>
+                <div class="edit-realty my-2">
+                    <div class="btn btn-info m-1">
+                        <a class="text-light" href="{{ path('realty_show', {'id': realty.id}) }}">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"/>
+                                <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                            </svg>
+                            Plus d'infos
+                        </a>
+                    </div>
+                    <div class="btn btn-warning m-1">
+                        <a class="text-light" href="{{ path('realty_edit', {'id': realty.id}) }}">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pen" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M5.707 13.707a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391L10.086 2.5a2 2 0 0 1 2.828 0l.586.586a2 2 0 0 1 0 2.828l-7.793 7.793zM3 11l7.793-7.793a1 1 0 0 1 1.414 0l.586.586a1 1 0 0 1 0 1.414L5 13l-3 1 1-3z"/>
+                                <path fill-rule="evenodd" d="M9.854 2.56a.5.5 0 0 0-.708 0L5.854 5.855a.5.5 0 0 1-.708-.708L8.44 1.854a1.5 1.5 0 0 1 2.122 0l.293.292a.5.5 0 0 1-.707.708l-.293-.293z"/>
+                                <path d="M13.293 1.207a1 1 0 0 1 1.414 0l.03.03a1 1 0 0 1 .03 1.383L13.5 4 12 2.5l1.293-1.293z"/>
+                            </svg>
+                            Modifier
+                        </a>
+                    </div>
+                    <div class="btn btn-danger m-1">
+                        <a class="text-light" href="{{ path('realty_delete', {'id': realty.id}) }}">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                            Supprimer
+                        </a>
+                    </div>
                
                 </div>
         </div>

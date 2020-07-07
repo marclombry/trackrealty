@@ -88,12 +88,11 @@ class RealtyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
             // recover the image
             $images = $form->get('photo')->getData();
-                    // change image's name
+            // change image's name
             $file = md5(uniqid()). '.'. $images->guessExtension();
-                    // copy image in upload folder
+            // copy image in upload folder
             $images->move(
                     $this->getParameter('images_directory'),
                     $file
