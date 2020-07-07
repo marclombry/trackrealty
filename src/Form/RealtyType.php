@@ -6,6 +6,7 @@ use App\Entity\Realty;
 use App\Entity\Tenant;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,6 +24,12 @@ class RealtyType extends AbstractType
             ->add('surface')
             ->add('nb_room')
             ->add('description')
+            ->add('photo', FileType::class,[
+                'label' => false,
+                'multiple' => false,
+                'mapped' => false,
+                'required' => false
+            ])
         ;
     }
 
