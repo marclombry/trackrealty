@@ -13,9 +13,17 @@
         {% include('/_nav.html.twig') %}
       
         {% block body %}{% endblock %}
-        {% block javascripts %}
-        
+        {% block footer %}
+        <footer class="page-footer font-small bg-secondary fixed-bottom">
+          <!-- Copyright -->
+          <div class="footer-copyright text-center py-3 bg-dark">© 2020 Copyright:Marc lombry
+            <a href="https://www.marclombry.com/"> Marc lombry</a>
+          </div>
+          <!-- Copyright -->
+        </footer>
         {% endblock %}
-         {{ encore_entry_script_tags('app') }}
+        {% block javascripts %}
+        {% endblock %}
+        {{ encore_entry_script_tags('app') }}
     </body>
 </html>
