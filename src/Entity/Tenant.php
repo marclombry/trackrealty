@@ -27,6 +27,7 @@ class Tenant
      */
     private $lastname;
 
+
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
      */
@@ -57,6 +58,11 @@ class Tenant
         $this->firstname = $firstname;
 
         return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->firstname." ".$this->lastname;
     }
 
     public function getLastname(): ?string

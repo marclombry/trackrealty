@@ -4,10 +4,11 @@
 
 {% block body %}
     <h1>Edit Realty</h1>
-
+    <div>
     {{ include('realty/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('realty_index') }}">back to list</a>
 
     {{ include('realty/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

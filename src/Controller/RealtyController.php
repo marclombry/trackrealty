@@ -44,6 +44,18 @@ class RealtyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // recover the image
+            $images = $form->get('photo')->getData();
+            // change image's name
+            $file = md5(uniqid()). '.'. $images->guessExtension();
+            // copy image in upload folder
+            $images->move(
+                $this->getParameter('images_directory'),
+                $file
+            );
+            // modify the image name for new name
+            $realty->setPhoto($file);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($realty);
             $entityManager->flush();
@@ -76,6 +88,18 @@ class RealtyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // recover the image
+            $images = $form->get('photo')->getData();
+            // change image's name
+            $file = md5(uniqid()). '.'. $images->guessExtension();
+            // copy image in upload folder
+            $images->move(
+                    $this->getParameter('images_directory'),
+                    $file
+            );
+            // modify the image name for new name
+            $realty->setPhoto($file);
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('realty_index');
