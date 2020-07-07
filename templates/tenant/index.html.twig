@@ -3,26 +3,24 @@
 {% block title %}Tenant index{% endblock %}
 
 {% block body %}
-    <h1>Tenant index</h1>
+    <h1>Mes locataires</h1>
     <div>
         <a href="{{ path('tenant_new') }}"><i class="icofont-plus"></i> Create new</a>
     </div>
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Phone</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Téléphone</th>
                 <th>Email</th>
-                <th>Maison</th>
+                <th>Bien</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for tenant in tenants %}
             <tr>
-                <td>{{ tenant.id }}</td>
                 <td>{{ tenant.firstname }}</td>
                 <td>{{ tenant.lastname }}</td>
                 <td>{{ tenant.phone }}</td>
