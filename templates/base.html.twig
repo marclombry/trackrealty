@@ -16,7 +16,9 @@
         <div class="mb-4 pb-4">
         </div>
         {% endblock %}
-  
+        {% block footer %}
+            {% include('/_footer.html.twig') %}
+        {% endblock %}
         {% block javascripts %}
         {% endblock %}
         {{ encore_entry_script_tags('app') }}
