@@ -37,7 +37,7 @@ class RealtyController extends AbstractController
     /**
      * @Route("/new", name="realty_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserInterface $user): Response
     {
         $realty = new Realty();
         $form = $this->createForm(RealtyType::class, $realty);
@@ -55,6 +55,8 @@ class RealtyController extends AbstractController
             );
             // modify the image name for new name
             $realty->setPhoto($file);
+            
+            $realty->setUser($user);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($realty);
