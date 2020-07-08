@@ -12,17 +12,11 @@
     <body>
         {% include('/_nav.html.twig') %}
       
-        {% block body %}{% endblock %}
-        {% block footer %}
-        <footer class="page-footer font-small bg-secondary mt-4">
-          <!-- Copyright -->
-          <div class="footer-copyright text-center py-3 bg-dark">
-            <a class="px-2" href="https://www.marclombry.com/">© 2020 Copyright: Marc lombry</a>
-            <a class="px-2" href="{{ path('mention') }}"> mentions légales</a>
-          </div>
-          <!-- Copyright -->
-        </footer>
+        {% block body %}
+        <div class="mb-4 pb-4">
+        </div>
         {% endblock %}
+  
         {% block javascripts %}
         {% endblock %}
         {{ encore_entry_script_tags('app') }}

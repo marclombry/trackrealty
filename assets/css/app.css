@@ -10,6 +10,7 @@ body {
 .btn-cloud{
     margin:10px;
     padding:10px;
+
 }
 
 :root {
@@ -672,7 +673,14 @@ body {
 .flex-vertical-navbar-footer{}
 /* footer*/
 .sticky-footer{position:fixed;bottom:0;}
-
+.sticky-footer-absolute{position:absolute;bottom:0;}
+.sticky-foot{
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+}
 /*gallery 3d*/
 .window-gallery3d {
   border: 1px solid #CCC;

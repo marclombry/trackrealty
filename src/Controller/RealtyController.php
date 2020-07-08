@@ -84,7 +84,7 @@ class RealtyController extends AbstractController
     /**
      * @Route("/{id}/edit", name="realty_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Realty $realty): Response
+    public function edit(Request $request, Realty $realty, UserInterface $user): Response
     {
         $form = $this->createForm(RealtyType::class, $realty);
         $form->handleRequest($request);
@@ -101,6 +101,7 @@ class RealtyController extends AbstractController
             );
             // modify the image name for new name
             $realty->setPhoto($file);
+            $realty->setUser($user);
 
             $this->getDoctrine()->getManager()->flush();
 
