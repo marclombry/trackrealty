@@ -3,6 +3,7 @@
 {% block title %}Realty index{% endblock %}
 
 {% block body %}
+    
     <h1 class="text-center">Mes biens immobiliers</h1>
     <div class="btn btn-success mx-3">
         <a class="text-light" href="{{ path('realty_new') }}">
@@ -14,7 +15,7 @@
         Ajouter un Bien
         </a>
     </div>
-    <div class="d-inline-flex">
+    <div class="d-inline-flex flex-wrap-wrap mb-4 pb-4">
     {% for realty in realties %}
     <div class=" border p-3 m-3 bg-light">
         <img src="/uploads/{{ realty.photo }}" alt="bien immobilier" class="mr-3 mt-3 rounded-square" style="width:300px;">

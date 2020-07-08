@@ -37,24 +37,33 @@ class RealtyController extends AbstractController
     /**
      * @Route("/new", name="realty_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserInterface $user): Response
     {
         $realty = new Realty();
         $form = $this->createForm(RealtyType::class, $realty);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             // recover the image
             $images = $form->get('photo')->getData();
+            
             // change image's name
-            $file = md5(uniqid()). '.'. $images->guessExtension();
-            // copy image in upload folder
-            $images->move(
-                $this->getParameter('images_directory'),
-                $file
-            );
-            // modify the image name for new name
-            $realty->setPhoto($file);
+            $file = ($images != null)? md5(uniqid()). '.'. $images->guessExtension(): false;
+                    
+            if($file){
+                // copy image in upload folder
+                $images->move(
+                    $this->getParameter('images_directory'),
+                    $file
+                );
+                // modify the image name for new name
+                $realty->setPhoto($file);
+            }else {
+                $realty->setPhoto('default.png');
+            }
+            
+            $realty->setUser($user);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($realty);
@@ -82,7 +91,7 @@ class RealtyController extends AbstractController
     /**
      * @Route("/{id}/edit", name="realty_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Realty $realty): Response
+    public function edit(Request $request, Realty $realty, UserInterface $user): Response
     {
         $form = $this->createForm(RealtyType::class, $realty);
         $form->handleRequest($request);
@@ -90,15 +99,23 @@ class RealtyController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // recover the image
             $images = $form->get('photo')->getData();
+            
             // change image's name
-            $file = md5(uniqid()). '.'. $images->guessExtension();
-            // copy image in upload folder
-            $images->move(
+            $file = ($images != null)? md5(uniqid()). '.'. $images->guessExtension(): false;
+            
+            if($file){
+                // copy image in upload folder
+                $images->move(
                     $this->getParameter('images_directory'),
                     $file
-            );
-            // modify the image name for new name
-            $realty->setPhoto($file);
+                );
+                // modify the image name for new name
+                $realty->setPhoto($file);
+            }else {
+                $realty->setPhoto('default.png');
+            }
+           
+            $realty->setUser($user);
 
             $this->getDoctrine()->getManager()->flush();
 

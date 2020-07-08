@@ -3,12 +3,26 @@
 {% block title %}Edit Realty{% endblock %}
 
 {% block body %}
-    <h1>Edit Realty</h1>
-    <div>
+    <h1 class="text-center">Modifier un bien</h1>
+        <a class="btn-cloud bg-cloud" href="{{ path('realty_index') }}">
+        Revenir
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-90deg-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M6.104 2.396a.5.5 0 0 1 0 .708L3.457 5.75l2.647 2.646a.5.5 0 1 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
+            <path fill-rule="evenodd" d="M2.75 5.75a.5.5 0 0 1 .5-.5h6.5a2.5 2.5 0 0 1 2.5 2.5v5.5a.5.5 0 0 1-1 0v-5.5a1.5 1.5 0 0 0-1.5-1.5h-6.5a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+        </a>
+    <div class="container bg-cloud my-4 py-2">
     {{ include('realty/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('realty_index') }}">back to list</a>
 
     {{ include('realty/_delete_form.html.twig') }}
     </div>
+{% endblock %}
+{% block footer %}
+<footer class="page-footer font-small bg-secondary mt-4">
+    <div class="footer-copyright text-center py-3 bg-dark">
+        <a class="px-2" href="https://www.marclombry.com/">© 2020 Copyright: Marc lombry</a>
+        <a class="px-2" href="{{ path('mention') }}"> mentions légales</a>
+    </div>
+</footer>
 {% endblock %}
