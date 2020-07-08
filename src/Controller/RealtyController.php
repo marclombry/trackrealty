@@ -44,17 +44,24 @@ class RealtyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             // recover the image
             $images = $form->get('photo')->getData();
+            
             // change image's name
-            $file = md5(uniqid()). '.'. $images->guessExtension();
-            // copy image in upload folder
-            $images->move(
-                $this->getParameter('images_directory'),
-                $file
-            );
-            // modify the image name for new name
-            $realty->setPhoto($file);
+            $file = ($images != null)? md5(uniqid()). '.'. $images->guessExtension(): false;
+                    
+            if($file){
+                // copy image in upload folder
+                $images->move(
+                    $this->getParameter('images_directory'),
+                    $file
+                );
+                // modify the image name for new name
+                $realty->setPhoto($file);
+            }else {
+                $realty->setPhoto('default.png');
+            }
             
             $realty->setUser($user);
 
@@ -92,15 +99,22 @@ class RealtyController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // recover the image
             $images = $form->get('photo')->getData();
+            
             // change image's name
-            $file = md5(uniqid()). '.'. $images->guessExtension();
-            // copy image in upload folder
-            $images->move(
+            $file = ($images != null)? md5(uniqid()). '.'. $images->guessExtension(): false;
+            
+            if($file){
+                // copy image in upload folder
+                $images->move(
                     $this->getParameter('images_directory'),
                     $file
-            );
-            // modify the image name for new name
-            $realty->setPhoto($file);
+                );
+                // modify the image name for new name
+                $realty->setPhoto($file);
+            }else {
+                $realty->setPhoto('default.png');
+            }
+           
             $realty->setUser($user);
 
             $this->getDoctrine()->getManager()->flush();
